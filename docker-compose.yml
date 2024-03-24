@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+
+  # Application
+  lm-terminal-fusion:
+    # docker file
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/root/app
+    working_dir: /root/app
+    # stop the container from exiting
+    command: tail -f /dev/null
