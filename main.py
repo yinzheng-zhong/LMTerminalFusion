@@ -4,7 +4,7 @@ from obj.initial_content import INITIAL_CONTENT
 from obj.message import user, assistant, system
 import colorama
 
-# create a Flappy Bird game in Python (python3)
+# Read the main.py with cat main.py and then refactor the code inside main.py
 conversation = INITIAL_CONTENT
 
 term = TerminalService()
@@ -30,7 +30,7 @@ while True:
             term_output = ["\n"]
 
         # take the last 10 lines of output
-        term_output = term_output[-10:]
+        term_output = term_output[-1000:]
         # implode the output list into a string
         term_output = "\n".join(term_output)
 
