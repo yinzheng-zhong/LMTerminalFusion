@@ -2,7 +2,7 @@ import os
 import logging
 import time
 from openai import OpenAI
-from services.Env.env import EnvironmentValues
+from packages.Env.env import EnvironmentValues
 
 
 class API:
