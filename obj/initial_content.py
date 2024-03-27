@@ -9,7 +9,7 @@ GOAL = 'show me a basic flask web dev example with templates.'
 INITIAL_CONTENT = [
     system(),
     user(
-        terminal_stdout='\n',
+        terminal_stdout='NEW GOAL',
         goal=GOAL
     ),
     assistant('pip install flask'),
@@ -94,5 +94,5 @@ EOF
         terminal_stdout="\n",
         goal=GOAL
     ),
-    assistant('DONE'),
+    assistant('DONE')
 ]

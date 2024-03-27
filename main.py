@@ -11,7 +11,7 @@ term = TerminalService()
 
 while True:
     goal = input("Enter a command: ")
-    message = user(terminal_stdout="\n", goal=goal)
+    message = user(terminal_stdout="NEW GOAL", goal=goal)
     conversation = conversation + [message]
     ini_ml_reply = api.lm_query(conversation)
     print(
@@ -51,6 +51,7 @@ while True:
 
         if 'DONE' in ml_reply:
             print(colorama.Fore.YELLOW + colorama.Style.BRIGHT + "Done reached." + colorama.Style.RESET_ALL)
+            conversation = INITIAL_CONTENT
             break
 
         command = ml_reply
