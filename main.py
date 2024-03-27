@@ -4,16 +4,15 @@ from obj.initial_content import INITIAL_CONTENT
 from obj.message import user, assistant, system
 import colorama
 
-# create a Python program to print out Hello World
+# create a Flappy Bird game in Python (python3)
 conversation = INITIAL_CONTENT
 
 term = TerminalService()
 
 while True:
     goal = input("Enter a command: ")
-    message = user('GOAL: ' + goal)
-    system_message = system(goal)
-    conversation = conversation + [message, system_message]
+    message = user(terminal_stdout="\n", goal=goal)
+    conversation = conversation + [message]
     ini_ml_reply = api.lm_query(conversation)
     print(
         colorama.Fore.CYAN + colorama.Style.BRIGHT + "The LM wants to execute:\n" + ini_ml_reply + colorama.Style.RESET_ALL
@@ -35,10 +34,11 @@ while True:
         # implode the output list into a string
         term_output = "\n".join(term_output)
 
-        print(colorama.Fore.YELLOW + colorama.Style.BRIGHT + "Terminal Output:\n"  + term_output + colorama.Style.RESET_ALL)
+        print(
+            colorama.Fore.YELLOW + colorama.Style.BRIGHT + "Terminal Output:\n" + term_output + colorama.Style.RESET_ALL)
 
         # add the terminal output to the content
-        conversation = conversation + [user(term_output), system_message]
+        conversation = conversation + [user(terminal_stdout=term_output, goal=goal)]
 
         print(colorama.Fore.GREEN + colorama.Style.BRIGHT + "Querying the LM" + colorama.Style.RESET_ALL)
 

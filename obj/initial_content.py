@@ -4,24 +4,33 @@ from obj.message import (
     user
 )
 
+GOAL = 'show me a basic flask web dev example with templates.'
+
 INITIAL_CONTENT = [
-    user('GOAL: show me a basic flask web dev example with templates.'),
-    system('show me a basic flask web dev example with templates.'),
+    system(),
+    user(
+        terminal_stdout='\n',
+        goal=GOAL
+    ),
     assistant('pip install flask'),
-    user('Defaulting to user installation because normal site-packages is not writeable\n'
-         'Collecting flask\n'
-         'Using cached Flask-1.1.4-py2.py3-none-any.whl (94 kB)\n'
-         'Requirement already satisfied: itsdangerous<2.0,>=0.24 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (1.1.0)\n'
-         'Requirement already satisfied: Jinja2<3.0,>=2.10.1 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (2.11.3)\n'
-         'Requirement already satisfied: Werkzeug<2.0,>=0.15 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (1.0.1)\n'
-         'Requirement already satisfied: click<8.0,>=5.1 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (7.1.2)\n'
-         'Requirement already satisfied: MarkupSafe>=0.23 in /home/yinzheng/.local/lib/python2.7/site-packages (from Jinja2<3.0,>=2.10.1->flask) (1.1.1)\n'
-         'Installing collected packages: flask\n'
-         'Successfully installed flask-1.1.4'),
-    system('show me a basic flask web dev example with templates.'),
+    user(
+        terminal_stdout='Defaulting to user installation because normal site-packages is not writeable\n' +
+                        'Collecting flask\n' +
+                        'Using cached Flask-1.1.4-py2.py3-none-any.whl (94 kB)\n' +
+                        'Requirement already satisfied: itsdangerous<2.0,>=0.24 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (1.1.0)\n' +
+                        'Requirement already satisfied: Jinja2<3.0,>=2.10.1 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (2.11.3)\n' +
+                        'Requirement already satisfied: Werkzeug<2.0,>=0.15 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (1.0.1)\n' +
+                        'Requirement already satisfied: click<8.0,>=5.1 in /home/yinzheng/.local/lib/python2.7/site-packages (from flask) (7.1.2)\n' +
+                        'Requirement already satisfied: MarkupSafe>=0.23 in /home/yinzheng/.local/lib/python2.7/site-packages (from Jinja2<3.0,>=2.10.1->flask) (1.1.1)\n' +
+                        'Installing collected packages: flask\n' +
+                        'Successfully installed flask-1.1.4',
+        goal=GOAL
+    ),
     assistant('mkdir basic_flask_app'),
-    user("\n"),
-    system('show me a basic flask web dev example with templates.'),
+    user(
+        terminal_stdout="\n",
+        goal=GOAL
+    ),
     assistant('''cat << 'EOF' > basic_flask_app/app.py
 from flask import Flask, render_template
 
@@ -38,11 +47,15 @@ def about():
 if __name__ == '__main__':
     app.run(debug=True)
 EOF'''),
-    user("\n"),
-    system('show me a basic flask web dev example with templates.'),
+    user(
+        terminal_stdout="\n",
+        goal=GOAL
+    ),
     assistant('mkdir basic_flask_app/templates'),
-    user("\n"),
-    system('show me a basic flask web dev example with templates.'),
+    user(
+        terminal_stdout="\n",
+        goal=GOAL
+    ),
     assistant('''cat << EOF > basic_flask_app/templates/index.html
 <!DOCTYPE html>
 <html>
@@ -55,8 +68,10 @@ EOF'''),
 </body>
 </html>
 EOF'''),
-    user("\n"),
-    system('show me a basic flask web dev example with templates.'),
+    user(
+        terminal_stdout="\n",
+        goal=GOAL
+    ),
     assistant('''cat << 'EOF' > basic_flask_app/templates/about.html
 <!DOCTYPE html>
 <html>
@@ -70,10 +85,14 @@ EOF'''),
 </html>
 EOF
 '''),
-    user("\n"),
-    system('show me a basic flask web dev example with templates.'),
+    user(
+        terminal_stdout="\n",
+        goal=GOAL
+    ),
     assistant('python basic_flask_app/app.py'),
-    user("\n"),
-    system('show me a basic flask web dev example with templates.'),
+    user(
+        terminal_stdout="\n",
+        goal=GOAL
+    ),
     assistant('DONE'),
 ]
