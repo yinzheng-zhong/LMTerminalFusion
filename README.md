@@ -32,3 +32,7 @@ is stopped at a proper time.
 ```
 
 Set the `context over flow policy` to `Keep the system prompt and the first user message, truncate middle`.
+
+### Docker
+Run this program in a docker container is recommended. If you don't mind the LM messing up your system,
+you can run it directly (which I normally does).
