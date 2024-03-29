@@ -51,8 +51,8 @@ class API:
 
 if __name__ == "__main__":
     api = API(EnvironmentValues())
-    from obj.initial_content import INITIAL_CONTENT
-    from obj.message import user
+    from packages.conversation.initial_content import INITIAL_CONTENT
+    from packages.conversation.message import user
 
     content = INITIAL_CONTENT
 

@@ -1,4 +1,4 @@
-from obj.message import (
+from packages.conversation.message import (
     system,
     assistant,
     user
