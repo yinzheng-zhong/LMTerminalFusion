@@ -2,7 +2,7 @@ import os
 import logging
 import time
 from openai import OpenAI
-from packages.Env.env import EnvironmentValues
+from services.Env.env import EnvironmentValues
 
 
 class API:
@@ -51,8 +51,8 @@ class API:
 
 if __name__ == "__main__":
     api = API(EnvironmentValues())
-    from packages.conversation.initial_content import INITIAL_CONTENT
-    from packages.conversation.message import user
+    from services.conversation.initial_content import INITIAL_CONTENT
+    from services.conversation.message import user
 
     content = INITIAL_CONTENT
 

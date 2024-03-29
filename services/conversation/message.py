@@ -10,9 +10,16 @@ def assistant(content: str):
 
 
 def user(terminal_stdout: str, goal: str):
-    return {"role": "user", "content": "GOAL: " + goal +
-                                       "\nTERMINAL OUTPUT: " + terminal_stdout
-            }
+    return {
+        "role": "user", "content": "GOAL: " + goal +
+                                   f"\nTERMINAL OUTPUT: ```shell\n{terminal_stdout}\n```"
+    }
+
+
+def user_general(terminal_stdout: str):
+    return {
+        "role": "user", "content": terminal_stdout
+    }
 
 
 def system():

@@ -1,4 +1,4 @@
-from packages.terminal.sub_process import SubProcess
+from services.terminal.sub_process import SubProcess
 
 
 class Terminal:

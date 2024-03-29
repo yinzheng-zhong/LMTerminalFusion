@@ -1,4 +1,4 @@
-from packages.conversation.message import (
+from services.conversation.message import (
     system,
     assistant,
     user
@@ -12,7 +12,7 @@ INITIAL_CONTENT = [
         terminal_stdout='',
         goal=GOAL
     ),
-    assistant('pip install flask'),
+    assistant('```shell\npip install flask\n```'),
     user(
         terminal_stdout='Defaulting to user installation because normal site-packages is not writeable\n' +
                         'Collecting flask\n' +
@@ -26,12 +26,13 @@ INITIAL_CONTENT = [
                         'Successfully installed flask-1.1.4',
         goal=GOAL
     ),
-    assistant('mkdir basic_flask_app'),
+    assistant('```shell\nmkdir basic_flask_app\n```'),
     user(
         terminal_stdout="",
         goal=GOAL
     ),
-    assistant('''cat << 'EOF' > basic_flask_app/app.py
+    assistant('''```shell
+cat << 'EOF' > basic_flask_app/app.py
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -46,17 +47,19 @@ def about():
 
 if __name__ == '__main__':
     app.run(debug=True)
-EOF'''),
+EOF
+```'''),
     user(
         terminal_stdout="",
         goal=GOAL
     ),
-    assistant('mkdir basic_flask_app/templates'),
+    assistant('```shell\nmkdir basic_flask_app/templates\n```'),
     user(
         terminal_stdout="",
         goal=GOAL
     ),
-    assistant('''cat << EOF > basic_flask_app/templates/index.html
+    assistant('''```shell
+cat << EOF > basic_flask_app/templates/index.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,12 +70,14 @@ EOF'''),
     <p>This is the home page!</p>
 </body>
 </html>
-EOF'''),
+EOF
+```'''),
     user(
         terminal_stdout="",
         goal=GOAL
     ),
-    assistant('''cat << 'EOF' > basic_flask_app/templates/about.html
+    assistant('''```shell
+cat << 'EOF' > basic_flask_app/templates/about.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +94,7 @@ EOF
         terminal_stdout="",
         goal=GOAL
     ),
-    assistant('python basic_flask_app/app.py'),
+    assistant('```shell\npython basic_flask_app/app.py\n```'),
     user(
         terminal_stdout="",
         goal=GOAL
