@@ -9,7 +9,7 @@ GOAL = 'show me a basic flask web dev example with templates.'
 INITIAL_CONTENT = [
     system(),
     user(
-        terminal_stdout='NEW GOAL',
+        terminal_stdout='',
         goal=GOAL
     ),
     assistant('pip install flask'),
@@ -28,7 +28,7 @@ INITIAL_CONTENT = [
     ),
     assistant('mkdir basic_flask_app'),
     user(
-        terminal_stdout="\n",
+        terminal_stdout="",
         goal=GOAL
     ),
     assistant('''cat << 'EOF' > basic_flask_app/app.py
@@ -48,12 +48,12 @@ if __name__ == '__main__':
     app.run(debug=True)
 EOF'''),
     user(
-        terminal_stdout="\n",
+        terminal_stdout="",
         goal=GOAL
     ),
     assistant('mkdir basic_flask_app/templates'),
     user(
-        terminal_stdout="\n",
+        terminal_stdout="",
         goal=GOAL
     ),
     assistant('''cat << EOF > basic_flask_app/templates/index.html
@@ -69,7 +69,7 @@ EOF'''),
 </html>
 EOF'''),
     user(
-        terminal_stdout="\n",
+        terminal_stdout="",
         goal=GOAL
     ),
     assistant('''cat << 'EOF' > basic_flask_app/templates/about.html
@@ -86,12 +86,12 @@ EOF'''),
 EOF
 '''),
     user(
-        terminal_stdout="\n",
+        terminal_stdout="",
         goal=GOAL
     ),
     assistant('python basic_flask_app/app.py'),
     user(
-        terminal_stdout="\n",
+        terminal_stdout="",
         goal=GOAL
     ),
     assistant('DONE')

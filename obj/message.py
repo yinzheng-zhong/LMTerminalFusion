@@ -3,15 +3,16 @@ def assistant(content: str):
 
 
 def user(terminal_stdout: str, goal: str):
-    return {"role": "user", "content": "GOAL: " + goal + "\nTERMINAL STDOUT: " + terminal_stdout}
+    return {"role": "user", "content": "GOAL: " + goal +
+                                       "\nTERMINAL OUTPUT: " + terminal_stdout
+            }
 
 
-INSTRUCTION = ('You are an assistant that writes and reads the console commands to achieve the programming goal. ' +
-               'Your responses (command) will be one command at a time, with each response JUST the console command and nothing else. ' +
-               'The GOAL specifies the goal, TERMINAL STDOUT is the terminal output from your previous command. ' +
-               'You receive the last 1000 lines of the terminal output and you then respond with the next command. ' +
-               'You have to try to fix the errors based on the terminal output. ' +
-               'When we reached the end of console commands, respond "DONE" and then you will do it again with some new GOAL from the user.')
+INSTRUCTION = 'You are an assistant that controls the terminal to achieve the programming goal. ' + \
+              'Your response (command) should be a single console command at a time. Each response should contain just the console command, without any additional text, comments or information. ' + \
+              'You receive the last terminal output, from which you should decide and respond with the next console command. ' + \
+              'You are required to fix any errors raised based on this terminal output. ' + \
+              'If there is no further command to execute (i.e., when we have reached the goal), respond with the message "DONE" and await new instructions.'
 
 
 def system():

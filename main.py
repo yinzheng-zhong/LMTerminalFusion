@@ -49,7 +49,7 @@ def main():
 
     while True:
         goal = input("Enter a command: ")
-        message = user(terminal_stdout="NEW GOAL", goal=goal)
+        message = user(terminal_stdout="", goal=goal)
         conversation = conversation + [message]
         ini_lm_reply = lm.get_lm_reply(conversation)
 

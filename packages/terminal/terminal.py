@@ -14,7 +14,7 @@ class Terminal:
 
     def _format_terminal_output(self, term_output: [str]) -> [str]:
         if len(term_output) == 0:
-            term_output = ["\n"]
+            term_output = [""]
 
         term_output = term_output[-1000:]
         return "\n".join(term_output)
