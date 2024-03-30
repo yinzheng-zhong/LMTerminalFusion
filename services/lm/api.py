@@ -36,7 +36,7 @@ class API:
                 completion = self.client.chat.completions.create(
                     model=self.env.get_value("OPENAI_MODEL"),
                     messages=message,
-                    temperature=0.1
+                    temperature=0.3
                 )
                 reply_content = completion.choices[0].message.content
                 if reply_content:

@@ -19,6 +19,17 @@ def print_lm_execution(lm_execution):
     )
 
 
+def retry_for_shell_command(lm_reply):
+    print(
+        colorama.Fore.RED + colorama.Style.BRIGHT +
+        "LM hasn't return any shell command. Trying to emphasise the requirement" +
+        colorama.Style.RESET_ALL
+    )
+    lm_reply = conversation.emphasise()
+    lm_reply = lm.get_lm_reply(lm_reply)
+    return response_processor.process(lm_reply)
+
+
 def main():
     while True:
         goal = input("Enter a command: ")
@@ -32,11 +43,9 @@ def main():
                 break
 
             lm_reply = response_processor.process(lm_reply)
-            if lm_reply is None:
-                print(colorama.Fore.RED + colorama.Style.BRIGHT + "LM hasn't return any shell command." + colorama.Style.RESET_ALL)
-                lm_reply = conversation.hint()
-                lm_reply = lm.get_lm_reply(lm_reply)
-                lm_reply = response_processor.process(lm_reply)
+
+            while lm_reply is None:
+                lm_reply = retry_for_shell_command(lm_reply)
 
             print_lm_execution(lm_reply)
             conversation.add_lm_message(lm_reply)

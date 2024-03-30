@@ -1,5 +1,4 @@
-from services.conversation.initial_content import INITIAL_CONTENT
-from services.conversation.message import user, assistant, user_general
+from services.conversation.message import user, assistant, user_general, system
 
 
 class Conversation:
@@ -22,7 +21,7 @@ class Conversation:
     def get_conversation(self):
         return self._messages
 
-    def hint(self):
+    def emphasise(self):
         """
         Temporarily swap the last message with a hint message.
         """
@@ -30,10 +29,10 @@ class Conversation:
         if previous_message['role'] == 'user':
             message_with_hint = (
                     previous_message['content'] +
-                    " HINT: You have not provided any shell command. Provide a shell command to write the file."
+                    " HINT: You should only provide shell commands like ```shell\nls -la\n``` for any operation."
             )
             return self._messages[:-1] + [user_general(message_with_hint)]
 
     def reset(self):
-        self._messages = INITIAL_CONTENT
+        self._messages = [system()]
         self._goal = ""
