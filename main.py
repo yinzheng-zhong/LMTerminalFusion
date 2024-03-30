@@ -19,7 +19,11 @@ def print_lm_execution(lm_execution):
     )
 
 
-def retry_for_shell_command(lm_reply):
+def retry_for_shell_command():
+    """
+    Try to ask the LM to return a shell command.
+    :return:
+    """
     print(
         colorama.Fore.RED + colorama.Style.BRIGHT +
         "LM hasn't return any shell command. Trying to emphasise the requirement" +
@@ -36,22 +40,30 @@ def main():
         conversation.set_goal(goal)
 
         while True:
-            lm_reply = lm.get_lm_reply(conversation.get_conversation())
-            if 'DONE' in lm_reply:
+            lm_reply_raw = lm.get_lm_reply(conversation.get_conversation())
+            if 'DONE' in lm_reply_raw:
                 print(colorama.Fore.YELLOW + colorama.Style.BRIGHT + "Done reached." + colorama.Style.RESET_ALL)
                 conversation.reset()
                 break
 
-            lm_reply = response_processor.process(lm_reply)
+            command = response_processor.process(lm_reply_raw)
+            if command:
+                conversation.add_lm_command(command)
+            else:
+                conversation.add_lm_raw_message(lm_reply_raw)
 
-            while lm_reply is None:
-                lm_reply = retry_for_shell_command(lm_reply)
+            while command is None:
+                command = retry_for_shell_command()
+                if command:
+                    # Remove the last wrong message and add the new message as command
+                    conversation.remove_last_message()
+                    conversation.add_lm_command(command)
+                    break
 
-            print_lm_execution(lm_reply)
-            conversation.add_lm_message(lm_reply)
+            print_lm_execution(command)
 
             input("Press Enter to confirm execution...")
-            term_output = terminal.execute_command(lm_reply)
+            term_output = terminal.execute_command(command)
             print_terminal_output(term_output)
             conversation.add_terminal_message(term_output)
 

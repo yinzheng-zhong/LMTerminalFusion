@@ -48,18 +48,3 @@ class API:
 
         raise Exception("Maximum retries exceeded. Check your code for errors.")
 
-
-if __name__ == "__main__":
-    api = API(EnvironmentValues())
-    from services.conversation.initial_content import INITIAL_CONTENT
-    from services.conversation.message import user
-
-    content = INITIAL_CONTENT
-
-    while True:
-        i = input("New message: ")
-        message = user(i)
-        content = content + [message]
-        o = api.lm_query(content)
-
-        print(o)

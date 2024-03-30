@@ -8,9 +8,9 @@ class ResponseProcessor:
         """
         The extract_command method is used to extract the command from the ```shell\n{command}\n```.
         """
-        # if no markup is found, return as it is
-        if "```" not in response:
-            return response
+        # # if no markup is found, return as it is
+        # if "```" not in response:
+        #     return response
 
         # search for ```shell
         start = response.find("```shell")
