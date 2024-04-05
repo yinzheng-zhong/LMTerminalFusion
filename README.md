@@ -34,12 +34,12 @@ is stopped at a proper time.
 Set the `context over flow policy` to `Keep the system prompt and the first user message, truncate middle`.
 
 ### Docker
-Run this program in a docker container is recommended. If you don't mind the LM messing up your system,
-you can run it directly (which I normally does).
+Running this program in a docker container is recommended. If you don't mind the LM messing up your system,
+you can run it directly (which I normally do).
 
 
 ## Future Works
-This project is still in its early stage. The following features are planned to be added in the future:
+This project is still in its early stages. The following features are planned to be added in the future:
 
 - [] Add the ability to scrape the web
 - [] Add the ability to insert additional human input
